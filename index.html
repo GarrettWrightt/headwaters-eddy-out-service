@@ -64,9 +64,11 @@
   }
   .hero-bg{
     position:absolute;inset:0;
-    background-image:url('images/hero-river.jpg');
-    background-size:cover;background-position:center 42%;
-    opacity:0.42;
+    background:
+      radial-gradient(ellipse at 68% 30%, rgba(61,122,94,0.45) 0%, transparent 55%),
+      radial-gradient(ellipse at 20% 75%, rgba(42,80,64,0.5) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(29,58,46,0.3) 0%, transparent 70%);
+    opacity:1;
   }
   .hero-overlay{
     position:absolute;inset:0;
@@ -178,32 +180,28 @@
   .intro-text p{margin-top:22px;font-size:17px;line-height:1.78;color:var(--slate);font-weight:300;}
   .intro-text p+p{margin-top:16px;}
   .intro-text strong{color:var(--pine);font-weight:600;}
-  .intro-img{
-    position:relative;border-radius:6px;overflow:hidden;
-    aspect-ratio:4/3;
+  .intro-brand-panel{
+    background:var(--pine);border-radius:6px;
+    padding:52px 44px;display:flex;flex-direction:column;justify-content:center;
+    min-height:380px;position:relative;overflow:hidden;
   }
-  .intro-img img{width:100%;height:100%;object-fit:cover;display:block;}
-  .intro-img-badge{
-    position:absolute;bottom:24px;left:24px;
-    background:var(--pine);color:var(--white);
-    padding:14px 20px;border-radius:4px;
-    font-size:13px;font-weight:500;line-height:1.5;
-    max-width:260px;
+  .intro-brand-panel::after{
+    content:'';position:absolute;bottom:-60px;right:-60px;
+    width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,122,94,0.2) 0%,transparent 70%);
+    pointer-events:none;
   }
-  .intro-img-badge strong{display:block;font-size:15px;color:var(--sage);margin-bottom:2px;}
-
-  /* ─── PHOTO STRIP ─── */
-  .photo-strip{display:grid;grid-template-columns:1fr 1.3fr 1fr;height:320px;gap:4px;overflow:hidden;}
-  .ps-img{
-    background-size:cover;background-position:center;
-    position:relative;overflow:hidden;
-    transition:transform 0.5s ease;
-  }
-  .ps-img:hover{transform:scale(1.03);}
-  .ps-img-1{background-image:url('images/waterfall.jpg');background-position:center 30%;}
-  .ps-img-2{background-image:url('images/autumn-reflection.jpg');background-position:center 20%;}
-  .ps-img-3{background-image:url('images/mountain-river.jpg');background-position:center 40%;}
-  @media(max-width:640px){.photo-strip{grid-template-columns:1fr;height:220px;}}
+  .ibp-service{font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--sage);margin-bottom:12px;}
+  .ibp-firm{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;color:var(--white);line-height:1.12;margin-bottom:28px;}
+  .ibp-firm em{font-style:italic;color:var(--mist);}
+  .ibp-divider{width:36px;height:2px;background:var(--sage);margin-bottom:28px;}
+  .ibp-creds{display:flex;flex-direction:column;gap:13px;position:relative;z-index:2;}
+  .ibp-cred{font-size:13px;color:var(--mist);display:flex;align-items:center;gap:10px;line-height:1.4;}
+  .ibp-cred-icon{width:28px;height:28px;border-radius:4px;background:rgba(106,170,136,0.15);border:1px solid rgba(106,170,136,0.2);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+  .ibp-cred-text{font-size:12px;color:rgba(168,204,184,0.75);}
+  .ibp-link{margin-top:28px;position:relative;z-index:2;}
+  .ibp-link a{font-size:12px;font-weight:500;color:var(--sage);text-decoration:none;letter-spacing:0.04em;border-bottom:1px solid rgba(106,170,136,0.3);padding-bottom:1px;transition:color 0.2s,border-color 0.2s;}
+  .ibp-link a:hover{color:var(--mist);border-color:var(--mist);}
 
   /* ─── PROBLEM ─── */
   .problem{background:var(--cream);}
@@ -400,32 +398,73 @@
   .trust-text p{margin-top:20px;font-size:17px;line-height:1.78;color:var(--slate);font-weight:300;}
   .trust-text p+p{margin-top:16px;}
   .trust-text strong{color:var(--pine);font-weight:600;}
-  .carousel{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:4/3;background:var(--pine);}
-  .carousel-track{display:flex;height:100%;transition:transform 0.55s cubic-bezier(0.4,0,0.2,1);}
-  .carousel-slide{min-width:100%;height:100%;flex-shrink:0;}
-  .carousel-slide img{width:100%;height:100%;object-fit:cover;display:block;}
-  .carousel-btn{
-    position:absolute;top:50%;transform:translateY(-50%);
-    width:40px;height:40px;border-radius:50%;
-    background:rgba(29,58,46,0.55);border:1px solid rgba(255,255,255,0.2);
-    color:var(--white);font-size:22px;line-height:1;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;
-    transition:background 0.2s;z-index:5;
+  .trust-manifesto{
+    background:var(--pine);border-radius:6px;padding:52px 44px;
+    position:relative;overflow:hidden;
   }
-  .carousel-btn:hover{background:rgba(29,58,46,0.85);}
-  .carousel-prev{left:14px;}
-  .carousel-next{right:14px;}
-  .carousel-dots{
-    position:absolute;bottom:16px;left:50%;transform:translateX(-50%);
-    display:flex;gap:8px;z-index:5;
+  .trust-manifesto::after{
+    content:'';position:absolute;top:-80px;right:-80px;
+    width:300px;height:300px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,122,94,0.18) 0%,transparent 70%);
+    pointer-events:none;
   }
-  .carousel-dot{
-    width:7px;height:7px;border-radius:50%;
-    background:rgba(255,255,255,0.4);cursor:pointer;
-    transition:background 0.25s,transform 0.25s;border:none;padding:0;
+  .tm-location{font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--sage);margin-bottom:20px;}
+  .tm-quote{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(22px,2.4vw,32px);font-style:italic;font-weight:600;
+    color:var(--white);line-height:1.3;margin-bottom:32px;
   }
-  .carousel-dot.active{background:var(--white);transform:scale(1.25);}
+  .tm-seasons{display:flex;flex-direction:column;gap:10px;margin-bottom:32px;position:relative;z-index:2;}
+  .tm-season{font-size:13px;color:var(--mist);display:flex;align-items:center;gap:10px;}
+  .tm-season::before{content:'';width:18px;height:1px;background:var(--sage);flex-shrink:0;}
+  .tm-footer{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);position:relative;z-index:2;}
   @media(max-width:1024px){.trust{grid-template-columns:1fr;gap:48px;}}
+
+  /* ─── CONTACT / BOOKING ─── */
+  .contact-book{background:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;padding:100px 60px;}
+  .cb-heading{margin-bottom:20px;}
+  .cb-left p{margin-top:18px;font-size:17px;line-height:1.78;color:var(--slate);font-weight:300;}
+  .cb-info{margin-top:36px;display:flex;flex-direction:column;gap:18px;}
+  .cb-info-row{display:flex;align-items:flex-start;gap:14px;}
+  .cb-info-icon{
+    width:38px;height:38px;border-radius:6px;
+    background:var(--foam);border:1px solid var(--sand);
+    display:flex;align-items:center;justify-content:center;
+    font-size:16px;flex-shrink:0;
+  }
+  .cb-info-label{font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);margin-bottom:3px;}
+  .cb-info-value{font-size:15px;color:var(--slate);}
+  .cb-info-value a{color:var(--river);text-decoration:none;font-weight:500;}
+  .cb-info-value a:hover{color:var(--forest);}
+  .cb-book-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--forest);color:var(--white);
+    padding:16px 32px;font-size:15px;font-weight:600;border-radius:4px;
+    text-decoration:none;margin-top:36px;
+    transition:background 0.2s,transform 0.15s;
+  }
+  .cb-book-btn:hover{background:var(--river);transform:translateY(-1px);}
+  .cb-right{
+    background:var(--cream);border:1px solid var(--sand);
+    border-radius:8px;overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .cb-embed-header{
+    padding:22px 28px;border-bottom:1px solid var(--sand);
+    background:var(--white);
+  }
+  .cb-embed-header strong{font-size:15px;font-weight:600;color:var(--pine);display:block;}
+  .cb-embed-header span{font-size:13px;color:var(--stone);margin-top:3px;display:block;}
+  .cb-iframe-wrap{position:relative;height:520px;}
+  .cb-iframe-wrap iframe{width:100%;height:100%;border:none;display:block;}
+  .cb-iframe-fallback{
+    display:none;padding:40px 28px;text-align:center;
+  }
+  @media(max-width:1024px){
+    .contact-book{grid-template-columns:1fr;gap:48px;padding:64px 32px;}
+    .cb-iframe-wrap{height:440px;}
+  }
+  @media(max-width:640px){.contact-book{padding:64px 20px;}}
 
   /* ─── PROMISE ─── */
   .promise{
@@ -434,9 +473,8 @@
   }
   .promise::before{
     content:'';position:absolute;inset:0;
-    background-image:url('images/canyon-falls.jpg');
-    background-size:cover;background-position:center 30%;
-    opacity:0.13;
+    background:radial-gradient(ellipse at 50% 50%, rgba(61,122,94,0.12) 0%, transparent 70%);
+    opacity:1;
   }
   .promise blockquote{
     font-family:'Cormorant Garamond',serif;
@@ -546,7 +584,7 @@
     <li><a href="#how">How It Works</a></li>
     <li><a href="#deliverables">Deliverables</a></li>
     <li><a href="#pricing">Pricing</a></li>
-    <li><a href="https://calendar.app.google/P3cBjwgusU8THzh2A" target="_blank" class="nav-cta">Book a Free Call</a></li>
+    <li><a href="#contact" class="nav-cta">Book a Free Call</a></li>
   </ul>
 </nav>
 
@@ -560,7 +598,7 @@
     <p class="hero-product-tag">Sustainability reporting moves fast — like a river.<br>Let us help you build a strong headwaters.</p>
     <p class="hero-sub">A managed sustainability reporting service from Eddy Out Sustainability Consulting — accurate, audit-ready carbon accounting backed by ISO 14064-aligned methodology, at a price built for businesses of every size.</p>
     <div class="hero-actions">
-      <a href="https://calendar.app.google/P3cBjwgusU8THzh2A" target="_blank" class="btn-hero">Book a Free Scoping Call</a>
+      <a href="#contact" class="btn-hero">Book a Free Scoping Call</a>
       <a href="#pricing" class="btn-ghost-hero">See Service Plans →</a>
     </div>
   </div>
@@ -592,12 +630,25 @@
     <p>Headwaters is Eddy Out's managed reporting service — bringing that same philosophy to carbon accounting — turning what used to be an expensive, complex, in-house undertaking into a straightforward, affordable engagement that delivers the documentation your business actually needs.</p>
     <p>You share your data. We do the work. You get reports your customers, investors, and regulators will trust.</p>
   </div>
-  <div class="intro-img">
-    <img src="images/hero-river.jpg" alt="Eddy Out team in the Montana wilderness">
-    <div class="intro-img-badge">
-      <strong>A service of</strong>
-      Eddy Out Sustainability Consulting
+  <div class="intro-brand-panel">
+    <div class="ibp-service">A managed service of</div>
+    <div class="ibp-firm">Eddy Out<br><em>Sustainability</em><br>Consulting</div>
+    <div class="ibp-divider"></div>
+    <div class="ibp-creds">
+      <div class="ibp-cred">
+        <div class="ibp-cred-icon">🌿</div>
+        <div><div>ISO 14064 Aligned Methodology</div><div class="ibp-cred-text">International GHG quantification standard</div></div>
+      </div>
+      <div class="ibp-cred">
+        <div class="ibp-cred-icon">📐</div>
+        <div><div>GHG Protocol — Scope 1, 2 &amp; 3</div><div class="ibp-cred-text">Full emissions inventory coverage</div></div>
+      </div>
+      <div class="ibp-cred">
+        <div class="ibp-cred-icon">✅</div>
+        <div><div>Audit-Ready Documentation</div><div class="ibp-cred-text">Third-party verifiable at every tier</div></div>
+      </div>
     </div>
+    <div class="ibp-link"><a href="https://www.eddyoutenv.com" target="_blank">eddyoutenv.com →</a></div>
   </div>
 </section>
 
@@ -625,13 +676,6 @@
     </div>
   </div>
 </section>
-
-<!-- PHOTO STRIP -->
-<div class="photo-strip">
-  <div class="ps-img ps-img-1"></div>
-  <div class="ps-img ps-img-2"></div>
-  <div class="ps-img ps-img-3"></div>
-</div>
 
 <!-- HOW WE WORK -->
 <section class="how reveal" id="how">
@@ -906,19 +950,16 @@
     <p>We built Eddy Out to combine our professions with our passions. We do this work because we genuinely care, and that investment shows up for our clients in ways a bigger, disconnected firm simply can't match.</p>
     <p>These photos aren't here to question our professionalism. They're here to show you why we show up. <strong>For us, this work supports a lifestyle — and that's a different kind of guarantee than you'll find with most other companies.</strong></p>
   </div>
-  <div class="carousel" id="trust-carousel">
-    <div class="carousel-track" id="carousel-track">
-      <div class="carousel-slide"><img src="images/team-cycling.jpg" alt="Summit selfie — Bozeman backcountry"></div>
-      <div class="carousel-slide"><img src="images/team-snowmobile.jpg" alt="Snowmobiling in the Montana backcountry"></div>
-      <div class="carousel-slide"><img src="images/team-skiing.jpg" alt="Skiing in a suit — because we earned it"></div>
+  <div class="trust-manifesto">
+    <div class="tm-location">📍 Bozeman, Montana</div>
+    <blockquote class="tm-quote">"We do this work because we love this place — and we want it to stay worth loving."</blockquote>
+    <div class="tm-seasons">
+      <div class="tm-season">Summers on the river</div>
+      <div class="tm-season">Falls in the backcountry</div>
+      <div class="tm-season">Winters in the mountains</div>
+      <div class="tm-season">Year-round on the slopes</div>
     </div>
-    <button class="carousel-btn carousel-prev" onclick="carouselMove(-1)" aria-label="Previous">&#8249;</button>
-    <button class="carousel-btn carousel-next" onclick="carouselMove(1)" aria-label="Next">&#8250;</button>
-    <div class="carousel-dots">
-      <button class="carousel-dot active" onclick="carouselGo(0)"></button>
-      <button class="carousel-dot" onclick="carouselGo(1)"></button>
-      <button class="carousel-dot" onclick="carouselGo(2)"></button>
-    </div>
+    <div class="tm-footer">This is what we're protecting.</div>
   </div>
 </section>
 
@@ -930,16 +971,59 @@
   <cite>— Garrett Wright, Founder &amp; Principal Consultant, Eddy Out Sustainability Consulting</cite>
 </div>
 
-<!-- CTA -->
-<section class="cta reveal" id="contact">
-  <div class="section-eyebrow" style="justify-content:center;">Get Started</div>
-  <h2>Start with Headwaters<br><em>today</em></h2>
-  <p>Book a free scoping call with the Eddy Out team. We'll walk through your situation, what Headwaters can do for you, and which plan makes sense. No obligation, no jargon.</p>
-  <div class="cta-actions">
-    <a href="https://calendar.app.google/P3cBjwgusU8THzh2A" target="_blank" class="btn-primary">Book a Free Scoping Call</a>
-    <a href="#pricing" class="btn-outline">See Service Plans</a>
+<!-- CONTACT / BOOKING -->
+<section class="contact-book reveal" id="contact">
+  <div class="cb-left">
+    <div class="section-eyebrow">Book a Call</div>
+    <h2 class="cb-heading">Let's talk about<br><em>your reporting.</em></h2>
+    <p>No obligation, no jargon. We'll spend about 20 minutes walking through your situation, what Headwaters can do for you, and which plan makes sense. Pick a time on the right — or reach out directly below.</p>
+    <div class="cb-info">
+      <div class="cb-info-row">
+        <div class="cb-info-icon">✉</div>
+        <div>
+          <div class="cb-info-label">Email</div>
+          <div class="cb-info-value"><a href="mailto:Garrett@eddyoutenv.com">Garrett@eddyoutenv.com</a></div>
+        </div>
+      </div>
+      <div class="cb-info-row">
+        <div class="cb-info-icon">👤</div>
+        <div>
+          <div class="cb-info-label">You'll be speaking with</div>
+          <div class="cb-info-value">Garrett Wright — Founder &amp; Principal Consultant</div>
+        </div>
+      </div>
+      <div class="cb-info-row">
+        <div class="cb-info-icon">📍</div>
+        <div>
+          <div class="cb-info-label">Based in</div>
+          <div class="cb-info-value">Bozeman, Montana — serving clients nationwide</div>
+        </div>
+      </div>
+      <div class="cb-info-row">
+        <div class="cb-info-icon">🌐</div>
+        <div>
+          <div class="cb-info-label">Main website</div>
+          <div class="cb-info-value"><a href="https://www.eddyoutenv.com" target="_blank">eddyoutenv.com</a></div>
+        </div>
+      </div>
+    </div>
+    <a href="https://calendar.app.google/symd28moXkkpWh6M7" target="_blank" class="cb-book-btn">
+      Book a Free Scoping Call →
+    </a>
   </div>
-  <p class="cta-contact">Questions? Email us at <a href="mailto:Garrett@eddyoutenv.com">Garrett@eddyoutenv.com</a></p>
+  <div class="cb-right">
+    <div class="cb-embed-header">
+      <strong>Schedule a Free Scoping Call</strong>
+      <span>Choose a time that works for you — usually 20 minutes.</span>
+    </div>
+    <div class="cb-iframe-wrap">
+      <iframe
+        src="https://calendar.app.google/symd28moXkkpWh6M7"
+        title="Book a free scoping call with Garrett Wright"
+        loading="lazy"
+      ></iframe>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -1002,19 +1086,6 @@
   );
   reveals.forEach(el => io.observe(el));
 
-  let carouselIdx = 0;
-  const cTrack = document.getElementById('carousel-track');
-  const cDots = document.querySelectorAll('.carousel-dot');
-  const cTotal = 3;
-  function carouselGo(n) {
-    carouselIdx = ((n % cTotal) + cTotal) % cTotal;
-    cTrack.style.transform = 'translateX(-' + (carouselIdx * 100) + '%)';
-    cDots.forEach((d, i) => d.classList.toggle('active', i === carouselIdx));
-  }
-  function carouselMove(dir) { carouselGo(carouselIdx + dir); }
-  let cTimer = setInterval(() => carouselMove(1), 4500);
-  document.getElementById('trust-carousel').addEventListener('mouseenter', () => clearInterval(cTimer));
-  document.getElementById('trust-carousel').addEventListener('mouseleave', () => { cTimer = setInterval(() => carouselMove(1), 4500); });
 </script>
 </body>
 </html>
