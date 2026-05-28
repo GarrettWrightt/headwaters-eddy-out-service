@@ -3,7 +3,7 @@
 
 Landing page for the Headwaters managed sustainability reporting service.
 
-**Live site:** [GitHub Pages URL once deployed]  
+**Live site:** [headwatersreporting.com](https://headwatersreporting.com)  
 **Main site:** [eddyoutenv.com](https://www.eddyoutenv.com)  
 **Contact:** Garrett@eddyoutenv.com
 
