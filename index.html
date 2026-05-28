@@ -38,7 +38,8 @@
     padding:0 60px;
     height:72px;
   }
-  .nav-logo img{height:44px;width:auto;display:block;}
+  .nav-wordmark{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--pine);line-height:1;display:block;}
+  .nav-wordmark-sub{font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--river);display:block;margin-top:3px;}
   .nav-links{display:flex;gap:32px;list-style:none;align-items:center;}
   .nav-links a{
     color:var(--slate);text-decoration:none;
@@ -63,9 +64,11 @@
   }
   .hero-bg{
     position:absolute;inset:0;
-    background-image:url('https://images.squarespace-cdn.com/content/v1/66e88d40913abd50cd453218/1739311270320-SB99ZYEOP43K4L3E1E85/unsplash-image-wMnzSLWHCW8.jpg');
-    background-size:cover;background-position:center 30%;
-    opacity:0.35;
+    background:
+      radial-gradient(ellipse at 68% 30%, rgba(61,122,94,0.45) 0%, transparent 55%),
+      radial-gradient(ellipse at 20% 75%, rgba(42,80,64,0.5) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(29,58,46,0.3) 0%, transparent 70%);
+    opacity:1;
   }
   .hero-overlay{
     position:absolute;inset:0;
@@ -177,19 +180,28 @@
   .intro-text p{margin-top:22px;font-size:17px;line-height:1.78;color:var(--slate);font-weight:300;}
   .intro-text p+p{margin-top:16px;}
   .intro-text strong{color:var(--pine);font-weight:600;}
-  .intro-img{
-    position:relative;border-radius:4px;overflow:hidden;
-    aspect-ratio:4/3;
+  .intro-brand-panel{
+    background:var(--pine);border-radius:6px;
+    padding:52px 44px;display:flex;flex-direction:column;justify-content:center;
+    min-height:380px;position:relative;overflow:hidden;
   }
-  .intro-img img{width:100%;height:100%;object-fit:cover;display:block;}
-  .intro-img-badge{
-    position:absolute;bottom:24px;left:24px;
-    background:var(--pine);color:var(--white);
-    padding:14px 20px;border-radius:4px;
-    font-size:13px;font-weight:500;line-height:1.4;
-    max-width:240px;
+  .intro-brand-panel::after{
+    content:'';position:absolute;bottom:-60px;right:-60px;
+    width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,122,94,0.2) 0%,transparent 70%);
+    pointer-events:none;
   }
-  .intro-img-badge strong{display:block;font-size:15px;color:var(--sage);margin-bottom:2px;}
+  .ibp-service{font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--sage);margin-bottom:12px;}
+  .ibp-firm{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;color:var(--white);line-height:1.12;margin-bottom:28px;}
+  .ibp-firm em{font-style:italic;color:var(--mist);}
+  .ibp-divider{width:36px;height:2px;background:var(--sage);margin-bottom:28px;}
+  .ibp-creds{display:flex;flex-direction:column;gap:13px;position:relative;z-index:2;}
+  .ibp-cred{font-size:13px;color:var(--mist);display:flex;align-items:center;gap:10px;line-height:1.4;}
+  .ibp-cred-icon{width:28px;height:28px;border-radius:4px;background:rgba(106,170,136,0.15);border:1px solid rgba(106,170,136,0.2);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+  .ibp-cred-text{font-size:12px;color:rgba(168,204,184,0.75);}
+  .ibp-link{margin-top:28px;position:relative;z-index:2;}
+  .ibp-link a{font-size:12px;font-weight:500;color:var(--sage);text-decoration:none;letter-spacing:0.04em;border-bottom:1px solid rgba(106,170,136,0.3);padding-bottom:1px;transition:color 0.2s,border-color 0.2s;}
+  .ibp-link a:hover{color:var(--mist);border-color:var(--mist);}
 
   /* ─── PROBLEM ─── */
   .problem{background:var(--cream);}
@@ -388,9 +400,8 @@
   }
   .promise::before{
     content:'';position:absolute;inset:0;
-    background-image:url('https://images.squarespace-cdn.com/content/v1/66e88d40913abd50cd453218/77eb9f0d-5046-4082-994b-e5bd09ca16c5/IMG_1493.jpeg');
-    background-size:cover;background-position:center;
-    opacity:0.08;
+    background:radial-gradient(ellipse at 50% 50%, rgba(61,122,94,0.12) 0%, transparent 70%);
+    opacity:1;
   }
   .promise blockquote{
     font-family:'Cormorant Garamond',serif;
@@ -431,7 +442,8 @@
     padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.07);
     margin-bottom:32px;
   }
-  .footer-brand img{height:38px;width:auto;filter:brightness(0) invert(1);opacity:0.85;margin-bottom:16px;}
+  .footer-wordmark{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:rgba(255,255,255,0.85);display:block;line-height:1;margin-bottom:4px;}
+  .footer-wordmark-sub{font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:14px;}
   .footer-tagline{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.35);}
   .footer-social{display:flex;gap:14px;margin-top:20px;}
   .footer-social a{
@@ -491,13 +503,9 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo" style="display:flex;flex-direction:column;gap:0;">
-    <img
-      src="https://images.squarespace-cdn.com/content/v1/66e88d40913abd50cd453218/9f7361bb-6e0d-49da-b3da-38b8e0bc7100/Eddy+Out+White+Page+Logo+%286%29.png"
-      alt="Eddy Out Sustainability Consulting" style="height:36px;"
-      onerror="this.parentElement.innerHTML='<span style=\'font-family:Cormorant Garamond,serif;font-size:22px;font-weight:700;color:#2a5040;\'>Eddy Out <span style=\'font-weight:400;\'>Sustainability</span></span>'"
-    >
-    <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--river);margin-top:2px;">Headwaters Reporting</span>
+  <div class="nav-logo">
+    <span class="nav-wordmark">Headwaters</span>
+    <span class="nav-wordmark-sub">by Eddy Out Sustainability Consulting</span>
   </div>
   <ul class="nav-links">
     <li><a href="#how">How It Works</a></li>
@@ -548,15 +556,25 @@
     <p>Headwaters is Eddy Out's managed reporting service — bringing that same philosophy to carbon accounting — turning what used to be an expensive, complex, in-house undertaking into a straightforward, affordable engagement that delivers the documentation your business actually needs.</p>
     <p>You share your data. We do the work. You get reports your customers, investors, and regulators will trust.</p>
   </div>
-  <div class="intro-img">
-    <img
-      src="https://images.squarespace-cdn.com/content/v1/66e88d40913abd50cd453218/4cedd536-ec67-4125-bc5a-9459eb6520a6/IMG_7762.jpeg"
-      alt="Eddy Out team in the field"
-    >
-    <div class="intro-img-badge">
-      <strong>Done for you</strong>
-      No sustainability team required on your end
+  <div class="intro-brand-panel">
+    <div class="ibp-service">A managed service of</div>
+    <div class="ibp-firm">Eddy Out<br><em>Sustainability</em><br>Consulting</div>
+    <div class="ibp-divider"></div>
+    <div class="ibp-creds">
+      <div class="ibp-cred">
+        <div class="ibp-cred-icon">🌿</div>
+        <div><div>ISO 14064 Aligned Methodology</div><div class="ibp-cred-text">International GHG quantification standard</div></div>
+      </div>
+      <div class="ibp-cred">
+        <div class="ibp-cred-icon">📐</div>
+        <div><div>GHG Protocol — Scope 1, 2 &amp; 3</div><div class="ibp-cred-text">Full emissions inventory coverage</div></div>
+      </div>
+      <div class="ibp-cred">
+        <div class="ibp-cred-icon">✅</div>
+        <div><div>Audit-Ready Documentation</div><div class="ibp-cred-text">Third-party verifiable at every tier</div></div>
+      </div>
     </div>
+    <div class="ibp-link"><a href="https://www.eddyoutenv.com" target="_blank">eddyoutenv.com →</a></div>
   </div>
 </section>
 
@@ -831,13 +849,7 @@
   <h2>People who care about<br><em>your outcomes</em></h2>
   <div class="team-grid">
     <div class="team-card">
-      <div class="team-avatar">
-        <img
-          src="https://images.squarespace-cdn.com/content/v1/66e88d40913abd50cd453218/54d9247d-45d4-4a7f-b910-351aff33b646/Screenshot+2024-07-15+at+4.07.44%E2%80%AFPM.png"
-          alt="Garrett Wright"
-          onerror="this.outerHTML='GW'"
-        >
-      </div>
+      <div class="team-avatar">GW</div>
       <div>
         <div class="team-name">Garrett Wright</div>
         <div class="team-role">Principal Consultant &amp; Founder</div>
@@ -845,13 +857,7 @@
       </div>
     </div>
     <div class="team-card">
-      <div class="team-avatar">
-        <img
-          src="https://images.squarespace-cdn.com/content/v1/66e88d40913abd50cd453218/8676ef60-9a6f-43ee-a0b9-5c3d052f73db/IMG_2381.jpeg"
-          alt="Marcel Stenfert Kroese"
-          onerror="this.outerHTML='MS'"
-        >
-      </div>
+      <div class="team-avatar">MS</div>
       <div>
         <div class="team-name">Marcel Stenfert Kroese</div>
         <div class="team-role">Marketing &amp; Business Development</div>
@@ -886,11 +892,8 @@
   <div class="footer-top">
     <div>
       <div class="footer-brand">
-        <img
-          src="https://images.squarespace-cdn.com/content/v1/66e88d40913abd50cd453218/9f7361bb-6e0d-49da-b3da-38b8e0bc7100/Eddy+Out+White+Page+Logo+%286%29.png"
-          alt="Eddy Out"
-          onerror="this.parentElement.innerHTML='<span style=\'font-family:Cormorant Garamond,serif;font-size:20px;font-weight:700;color:rgba(255,255,255,0.8);\'>Eddy Out Sustainability</span>'"
-        >
+        <span class="footer-wordmark">Headwaters</span>
+        <span class="footer-wordmark-sub">by Eddy Out Sustainability Consulting</span>
       </div>
       <p class="footer-tagline">Headwaters Sustainability Reporting is a service of Eddy Out Sustainability Consulting — easy, affordable, and backed by the science regulators, investors, and customers trust.</p>
       <div class="footer-social">
