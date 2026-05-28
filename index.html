@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headwaters Sustainability Reporting — by Eddy Out Sustainability Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pine:    #1d3a2e;
+    --forest:  #2a5040;
+    --river:   #3d7a5e;
+    --sage:    #6aaa88;
+    --mist:    #a8ccb8;
+    --foam:    #d8eae0;
+    --cream:   #f5f2ec;
+    --sand:    #e8e0d0;
+    --stone:   #7a7060;
+    --ink:     #1a1a14;
+    --slate:   #4a4a3e;
+    --white:   #fefefe;
+    --teal:    #2e7d6e;
+    --teal-lt: #4aa892;
+  }
+
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;}
+
+  /* ─── NAV ─── */
+  nav{
+    position:sticky;top:0;z-index:100;
+    background:var(--white);
+    border-bottom:1px solid var(--sand);
+    display:flex;justify-content:space-between;align-items:center;
+    padding:0 60px;
+    height:72px;
+  }
+  .nav-logo img{height:44px;width:auto;display:block;}
+  .nav-links{display:flex;gap:32px;list-style:none;align-items:center;}
+  .nav-links a{
+    color:var(--slate);text-decoration:none;
+    font-size:14px;font-weight:500;letter-spacing:0.04em;
+    transition:color 0.2s;
+  }
+  .nav-links a:hover{color:var(--forest);}
+  .nav-cta{
+    background:var(--forest);color:var(--white)!important;
+    padding:9px 20px;border-radius:4px;
+    transition:background 0.2s!important;
+  }
+  .nav-cta:hover{background:var(--river)!important;}
+
+  /* ─── HERO ─── */
+  .hero{
+    min-height:92vh;
+    background:var(--pine);
+    position:relative;
+    display:flex;align-items:flex-end;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    background-image:url('https://images.squarespace-cdn.com/content/v1/66e88d40913abd50cd453218/1739311270320-SB99ZYEOP43K4L3E1E85/unsplash-image-wMnzSLWHCW8.jpg');
+    background-size:cover;background-position:center 30%;
+    opacity:0.35;
+  }
+  .hero-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(
+      to top,
+      rgba(29,58,46,0.97) 0%,
+      rgba(29,58,46,0.75) 45%,
+      rgba(29,58,46,0.2) 100%
+    );
+  }
+  .hero-content{
+    position:relative;z-index:5;
+    padding:0 60px 80px;
+    max-width:1200px;width:100%;
+  }
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(106,170,136,0.15);
+    border:1px solid rgba(106,170,136,0.3);
+    padding:6px 14px;border-radius:20px;
+    font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--mist);margin-bottom:28px;
+    opacity:0;animation:fadeUp 0.7s ease 0.2s forwards;
+  }
+  .hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--sage);}
+  .hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(46px,7vw,88px);font-weight:700;line-height:1.06;
+    color:var(--white);max-width:860px;
+    opacity:0;animation:fadeUp 0.8s ease 0.35s forwards;
+  }
+  .hero h1 em{font-style:italic;color:var(--mist);}
+  .hero-product-tag{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(20px,3vw,28px);font-style:italic;font-weight:400;
+    color:var(--sage);margin-top:18px;letter-spacing:0.01em;
+    opacity:0;animation:fadeUp 0.8s ease 0.5s forwards;
+  }
+  .hero-sub{
+    margin-top:28px;font-size:18px;line-height:1.7;
+    color:rgba(168,204,184,0.85);max-width:600px;font-weight:300;
+    opacity:0;animation:fadeUp 0.8s ease 0.5s forwards;
+  }
+  .hero-actions{
+    margin-top:44px;display:flex;gap:14px;flex-wrap:wrap;
+    opacity:0;animation:fadeUp 0.8s ease 0.65s forwards;
+  }
+  .btn-hero{
+    background:var(--sage);color:var(--pine);
+    padding:15px 32px;font-size:15px;font-weight:600;border-radius:4px;
+    text-decoration:none;letter-spacing:0.02em;
+    transition:background 0.2s,transform 0.15s;display:inline-block;
+  }
+  .btn-hero:hover{background:var(--mist);transform:translateY(-1px);}
+  .btn-ghost-hero{
+    border:1px solid rgba(168,204,184,0.35);color:var(--mist);
+    padding:15px 32px;font-size:15px;font-weight:500;border-radius:4px;
+    text-decoration:none;transition:all 0.2s;display:inline-block;
+  }
+  .btn-ghost-hero:hover{border-color:var(--mist);color:var(--white);}
+
+  .hero-standards{
+    position:absolute;right:60px;bottom:80px;
+    z-index:5;display:flex;flex-direction:column;gap:10px;
+    opacity:0;animation:fadeLeft 0.9s ease 1s forwards;
+  }
+  .std-pill{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(168,204,184,0.2);
+    border-radius:4px;padding:10px 16px;
+    font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--mist);text-align:right;
+  }
+  .std-pill span{display:block;font-size:10px;font-weight:400;color:var(--sage);letter-spacing:0.06em;margin-top:2px;}
+
+  /* ─── STRIP ─── */
+  .strip{
+    background:var(--forest);padding:18px 60px;
+    display:flex;gap:0;overflow-x:auto;
+    border-bottom:2px solid var(--teal);
+  }
+  .strip-item{
+    display:flex;align-items:center;gap:8px;
+    padding:0 28px 0 0;margin-right:28px;
+    border-right:1px solid rgba(168,204,184,0.15);
+    flex-shrink:0;
+  }
+  .strip-item:last-child{border-right:none;}
+  .strip-check{color:var(--sage);font-size:12px;}
+  .strip-text{font-size:12px;font-weight:500;letter-spacing:0.06em;color:var(--mist);white-space:nowrap;}
+
+  /* ─── SHARED SECTION ─── */
+  section{padding:96px 60px;}
+  .section-eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--river);margin-bottom:18px;
+  }
+  .section-eyebrow::before{content:'';width:22px;height:1.5px;background:var(--river);}
+  h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(32px,4.5vw,52px);font-weight:700;line-height:1.12;
+    color:var(--pine);
+  }
+  h2 em{font-style:italic;color:var(--river);}
+
+  /* ─── INTRO SPLIT ─── */
+  .intro{background:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+  .intro-text p{margin-top:22px;font-size:17px;line-height:1.78;color:var(--slate);font-weight:300;}
+  .intro-text p+p{margin-top:16px;}
+  .intro-text strong{color:var(--pine);font-weight:600;}
+  .intro-img{
+    position:relative;border-radius:4px;overflow:hidden;
+    aspect-ratio:4/3;
+  }
+  .intro-img img{width:100%;height:100%;object-fit:cover;display:block;}
+  .intro-img-badge{
+    position:absolute;bottom:24px;left:24px;
+    background:var(--pine);color:var(--white);
+    padding:14px 20px;border-radius:4px;
+    font-size:13px;font-weight:500;line-height:1.4;
+    max-width:240px;
+  }
+  .intro-img-badge strong{display:block;font-size:15px;color:var(--sage);margin-bottom:2px;}
+
+  /* ─── PROBLEM ─── */
+  .problem{background:var(--cream);}
+  .problem-intro{margin-top:18px;font-size:17px;line-height:1.75;color:var(--slate);font-weight:300;max-width:560px;}
+  .problem-grid{margin-top:52px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .problem-card{
+    background:var(--white);border:1px solid var(--sand);
+    border-left:3px solid var(--sage);border-radius:4px;
+    padding:26px 28px;
+    transition:border-left-color 0.2s;
+  }
+  .problem-card:hover{border-left-color:var(--river);}
+  .problem-card h4{font-size:15px;font-weight:600;color:var(--pine);margin-bottom:8px;}
+  .problem-card p{font-size:14px;line-height:1.65;color:var(--stone);}
+
+  /* ─── HOW WE WORK ─── */
+  .how{background:var(--pine);position:relative;overflow:hidden;}
+  .how::after{
+    content:'';position:absolute;top:-120px;right:-120px;
+    width:480px;height:480px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,122,94,0.18) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .how .section-eyebrow{color:var(--mist);}
+  .how .section-eyebrow::before{background:var(--mist);}
+  .how h2{color:var(--white);}
+  .how h2 em{color:var(--mist);}
+  .how-sub{margin-top:18px;font-size:17px;line-height:1.7;color:rgba(168,204,184,0.75);font-weight:300;max-width:540px;}
+  .steps-grid{
+    margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);
+    gap:2px;position:relative;
+  }
+  .steps-grid::before{
+    content:'';position:absolute;top:35px;
+    left:calc(12.5% + 18px);right:calc(12.5% + 18px);
+    height:1px;background:rgba(168,204,184,0.15);
+  }
+  .step{padding-right:20px;}
+  .step-num{
+    width:46px;height:46px;border-radius:50%;
+    border:1px solid rgba(168,204,184,0.25);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;
+    color:var(--sage);margin-bottom:22px;
+    background:var(--pine);position:relative;z-index:2;
+  }
+  .step h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:10px;}
+  .step p{font-size:13px;line-height:1.7;color:var(--sage);}
+
+  /* ─── DELIVERABLES ─── */
+  .deliverables{background:var(--white);}
+  .del-intro{margin-top:18px;font-size:17px;line-height:1.75;color:var(--slate);font-weight:300;max-width:580px;}
+  .del-grid{margin-top:52px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--sand);border:1px solid var(--sand);border-radius:6px;overflow:hidden;}
+  .del-card{background:var(--white);padding:36px 30px;transition:background 0.2s;}
+  .del-card:hover{background:var(--cream);}
+  .del-icon{font-size:26px;margin-bottom:16px;display:block;}
+  .del-title{font-size:16px;font-weight:600;color:var(--pine);margin-bottom:9px;}
+  .del-desc{font-size:13px;line-height:1.72;color:var(--stone);}
+
+  /* ─── STANDARDS ─── */
+  .standards{background:var(--cream);display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:start;}
+  .standards-text p{margin-top:20px;font-size:16px;line-height:1.78;color:var(--slate);font-weight:300;}
+  .standards-text p+p{margin-top:14px;}
+  .std-note{
+    margin-top:28px;background:var(--white);border:1px solid var(--sand);
+    border-left:3px solid var(--teal);
+    border-radius:4px;padding:18px 20px;
+    font-size:13px;line-height:1.65;color:var(--stone);
+  }
+  .std-note strong{color:var(--pine);}
+  .std-cards{display:flex;flex-direction:column;gap:14px;}
+  .std-card{
+    background:var(--white);border:1px solid var(--sand);border-radius:6px;
+    padding:24px 26px;display:flex;gap:16px;align-items:flex-start;
+    transition:border-color 0.2s,box-shadow 0.2s;
+  }
+  .std-card:hover{border-color:var(--sage);box-shadow:0 3px 16px rgba(42,80,64,0.07);}
+  .std-icon{
+    width:42px;height:42px;border-radius:6px;background:var(--pine);
+    display:flex;align-items:center;justify-content:center;
+    font-size:18px;flex-shrink:0;
+  }
+  .std-title{font-size:14px;font-weight:600;color:var(--pine);margin-bottom:4px;}
+  .std-desc{font-size:13px;line-height:1.6;color:var(--stone);}
+
+  /* ─── PRICING ─── */
+  .pricing{background:var(--pine);position:relative;overflow:hidden;}
+  .pricing::before{
+    content:'';position:absolute;bottom:-150px;right:-150px;
+    width:500px;height:500px;border-radius:50%;
+    background:radial-gradient(circle,rgba(61,122,94,0.12) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .pricing .section-eyebrow{color:var(--sage);}
+  .pricing .section-eyebrow::before{background:var(--sage);}
+  .pricing h2{color:var(--white);}
+  .pricing h2 em{color:var(--mist);}
+  .pricing-intro{margin-top:16px;font-size:16px;line-height:1.7;color:var(--sage);font-weight:300;max-width:520px;}
+  .pricing-cards{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;position:relative;z-index:2;}
+  .price-card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(168,204,184,0.13);
+    border-radius:6px;padding:38px 32px;
+    transition:background 0.25s,border-color 0.25s;
+    position:relative;
+  }
+  .price-card:hover{background:rgba(255,255,255,0.07);border-color:rgba(168,204,184,0.25);}
+  .price-card.featured{background:rgba(106,170,136,0.09);border-color:var(--sage);}
+  .featured-badge{
+    position:absolute;top:-11px;left:50%;transform:translateX(-50%);
+    background:var(--sage);color:var(--pine);
+    font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+    padding:3px 14px;border-radius:20px;white-space:nowrap;
+  }
+  .plan-name{
+    font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;
+    color:var(--mist);margin-bottom:20px;
+  }
+  .plan-price{display:flex;align-items:flex-start;gap:2px;margin-bottom:4px;}
+  .price-curr{font-size:18px;font-weight:600;color:var(--white);margin-top:8px;}
+  .price-amt{
+    font-family:'Cormorant Garamond',serif;
+    font-size:58px;font-weight:700;color:var(--white);line-height:1;
+  }
+  .price-per{font-size:13px;color:var(--sage);margin-top:14px;align-self:flex-end;padding-bottom:4px;}
+  .plan-billing{font-size:12px;color:var(--sage);margin-bottom:22px;}
+  .plan-desc{
+    font-size:13px;line-height:1.65;color:rgba(168,204,184,0.65);
+    margin-bottom:24px;padding-bottom:24px;
+    border-bottom:1px solid rgba(168,204,184,0.1);
+  }
+  .plan-features{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:32px;}
+  .plan-features li{font-size:13px;color:var(--mist);display:flex;gap:9px;align-items:flex-start;}
+  .plan-features li::before{content:'✓';color:var(--sage);font-weight:700;flex-shrink:0;margin-top:1px;}
+  .plan-cta{
+    display:block;text-align:center;padding:13px;border-radius:4px;
+    font-size:13px;font-weight:600;text-decoration:none;letter-spacing:0.04em;
+    transition:all 0.2s;border:1px solid rgba(168,204,184,0.22);color:var(--mist);
+  }
+  .plan-cta:hover{background:rgba(255,255,255,0.05);border-color:rgba(168,204,184,0.4);color:var(--white);}
+  .price-card.featured .plan-cta{background:var(--sage);color:var(--pine);border-color:var(--sage);}
+  .price-card.featured .plan-cta:hover{background:var(--mist);}
+  .pricing-note{margin-top:36px;text-align:center;font-size:13px;color:var(--sage);}
+  .pricing-note strong{color:var(--mist);}
+  .pricing-note a{color:var(--teal-lt);}
+
+  /* ─── WHO WE SERVE ─── */
+  .who{background:var(--white);}
+  .who-grid{margin-top:52px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .who-card{
+    border:1px solid var(--sand);border-radius:6px;
+    padding:28px 24px;transition:border-color 0.2s,box-shadow 0.2s;
+  }
+  .who-card:hover{border-color:var(--sage);box-shadow:0 4px 20px rgba(42,80,64,0.07);}
+  .who-icon{font-size:26px;margin-bottom:14px;display:block;}
+  .who-title{font-size:15px;font-weight:600;color:var(--pine);margin-bottom:8px;}
+  .who-desc{font-size:13px;line-height:1.65;color:var(--stone);}
+
+  /* ─── ROI ─── */
+  .roi{background:var(--cream);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+  .roi-text p{margin-top:20px;font-size:17px;line-height:1.78;color:var(--slate);font-weight:300;}
+  .roi-nums{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .roi-card{background:var(--white);border:1px solid var(--sand);border-radius:6px;padding:26px 22px;}
+  .roi-val{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:700;color:var(--pine);line-height:1;}
+  .roi-lbl{font-size:12px;color:var(--stone);margin-top:8px;line-height:1.45;}
+
+  /* ─── TEAM ─── */
+  .team{background:var(--pine);}
+  .team .section-eyebrow{color:var(--mist);}
+  .team .section-eyebrow::before{background:var(--mist);}
+  .team h2{color:var(--white);}
+  .team h2 em{color:var(--mist);}
+  .team-grid{margin-top:52px;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .team-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(168,204,184,0.13);
+    border-radius:6px;padding:36px;
+    display:flex;gap:28px;align-items:flex-start;
+  }
+  .team-avatar{
+    width:72px;height:72px;border-radius:50%;overflow:hidden;
+    border:2px solid rgba(106,170,136,0.3);flex-shrink:0;
+    background:var(--forest);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--sage);font-weight:700;
+  }
+  .team-avatar img{width:100%;height:100%;object-fit:cover;}
+  .team-name{font-size:17px;font-weight:600;color:var(--white);margin-bottom:3px;}
+  .team-role{font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);margin-bottom:12px;}
+  .team-bio{font-size:13px;line-height:1.7;color:rgba(168,204,184,0.7);}
+
+  /* ─── PROMISE ─── */
+  .promise{
+    background:var(--forest);padding:88px 60px;
+    text-align:center;position:relative;overflow:hidden;
+  }
+  .promise::before{
+    content:'';position:absolute;inset:0;
+    background-image:url('https://images.squarespace-cdn.com/content/v1/66e88d40913abd50cd453218/77eb9f0d-5046-4082-994b-e5bd09ca16c5/IMG_1493.jpeg');
+    background-size:cover;background-position:center;
+    opacity:0.08;
+  }
+  .promise blockquote{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(22px,3vw,38px);font-style:italic;
+    color:var(--white);max-width:800px;margin:0 auto;line-height:1.45;
+    position:relative;z-index:2;
+  }
+  .promise cite{
+    display:block;margin-top:28px;font-size:13px;font-style:normal;
+    color:var(--mist);letter-spacing:0.1em;text-transform:uppercase;
+    position:relative;z-index:2;
+  }
+
+  /* ─── CTA ─── */
+  .cta{background:var(--cream);text-align:center;padding:100px 60px;}
+  .cta h2{max-width:680px;margin:0 auto;}
+  .cta p{margin:22px auto 0;max-width:500px;font-size:17px;line-height:1.7;color:var(--stone);font-weight:300;}
+  .cta-actions{margin-top:44px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--forest);color:var(--white);
+    padding:15px 34px;font-size:15px;font-weight:600;border-radius:4px;
+    text-decoration:none;transition:background 0.2s,transform 0.15s;display:inline-block;
+  }
+  .btn-primary:hover{background:var(--river);transform:translateY(-1px);}
+  .btn-outline{
+    border:1.5px solid var(--river);color:var(--river);
+    padding:15px 34px;font-size:15px;font-weight:600;border-radius:4px;
+    text-decoration:none;transition:all 0.2s;display:inline-block;
+  }
+  .btn-outline:hover{background:var(--river);color:var(--white);}
+  .cta-contact{margin-top:28px;font-size:14px;color:var(--stone);}
+  .cta-contact a{color:var(--river);text-decoration:none;font-weight:500;}
+
+  /* ─── FOOTER ─── */
+  footer{background:var(--ink);padding:56px 60px 36px;}
+  .footer-top{
+    display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;
+    padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.07);
+    margin-bottom:32px;
+  }
+  .footer-brand img{height:38px;width:auto;filter:brightness(0) invert(1);opacity:0.85;margin-bottom:16px;}
+  .footer-tagline{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.35);}
+  .footer-social{display:flex;gap:14px;margin-top:20px;}
+  .footer-social a{
+    width:34px;height:34px;border-radius:50%;
+    border:1px solid rgba(255,255,255,0.12);
+    display:flex;align-items:center;justify-content:center;
+    color:rgba(255,255,255,0.45);font-size:12px;text-decoration:none;
+    transition:all 0.2s;
+  }
+  .footer-social a:hover{border-color:var(--sage);color:var(--sage);}
+  .footer-heading{font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:18px;}
+  .footer-links{list-style:none;display:flex;flex-direction:column;gap:11px;}
+  .footer-links a{font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;}
+  .footer-links a:hover{color:var(--white);}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;}
+  .footer-copy{font-size:12px;color:rgba(255,255,255,0.25);}
+  .footer-legal{display:flex;gap:20px;}
+  .footer-legal a{font-size:12px;color:rgba(255,255,255,0.25);text-decoration:none;transition:color 0.2s;}
+  .footer-legal a:hover{color:rgba(255,255,255,0.5);}
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:none;}}
+  @keyframes fadeLeft{from{opacity:0;transform:translateX(24px);}to{opacity:1;transform:none;}}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity 0.65s ease,transform 0.65s ease;}
+  .reveal.visible{opacity:1;transform:none;}
+
+  /* ─── RESPONSIVE ─── */
+  @media(max-width:1024px){
+    nav,section,footer,.promise,.cta,.strip{padding-left:32px;padding-right:32px;}
+    .hero-content{padding:0 32px 64px;}
+    .hero-standards{display:none;}
+    .intro,.standards,.roi{grid-template-columns:1fr;gap:48px;}
+    .intro-img{max-width:500px;}
+    .steps-grid{grid-template-columns:repeat(2,1fr);gap:36px;}
+    .steps-grid::before{display:none;}
+    .del-grid{grid-template-columns:repeat(2,1fr);}
+    .pricing-cards{grid-template-columns:1fr;max-width:420px;}
+    .who-grid{grid-template-columns:repeat(2,1fr);}
+    .team-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr 1fr;gap:40px;}
+  }
+  @media(max-width:640px){
+    nav{padding:0 20px;}
+    .nav-links{display:none;}
+    section,.cta,.promise{padding:64px 20px;}
+    .problem-grid{grid-template-columns:1fr;}
+    .del-grid{grid-template-columns:1fr;}
+    .who-grid{grid-template-columns:1fr;}
+    .roi-nums{grid-template-columns:1fr 1fr;}
+    .team-card{flex-direction:column;}
+    .footer-top{grid-template-columns:1fr;gap:32px;}
+    .footer-bottom{flex-direction:column;gap:14px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" style="display:flex;flex-direction:column;gap:0;">
+    <img
+      src="https://images.squarespace-cdn.com/content/v1/66e88d40913abd50cd453218/9f7361bb-6e0d-49da-b3da-38b8e0bc7100/Eddy+Out+White+Page+Logo+%286%29.png"
+      alt="Eddy Out Sustainability Consulting" style="height:36px;"
+      onerror="this.parentElement.innerHTML='<span style=\'font-family:Cormorant Garamond,serif;font-size:22px;font-weight:700;color:#2a5040;\'>Eddy Out <span style=\'font-weight:400;\'>Sustainability</span></span>'"
+    >
+    <span style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--river);margin-top:2px;">Headwaters Reporting</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#deliverables">Deliverables</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="https://www.eddyoutenv.com/contact" target="_blank" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><div class="hero-badge-dot"></div>by Eddy Out Sustainability Consulting</div>
+    <h1>Headwaters<br><em>Sustainability Reporting</em></h1><p class="hero-product-tag">We handle the reporting. You run your business.</p>
+    <p class="hero-sub">A managed sustainability reporting service from Eddy Out Sustainability Consulting — accurate, audit-ready carbon accounting backed by ISO 14064-aligned methodology, at a price built for businesses of every size.</p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn-hero">See Service Plans</a>
+      <a href="#how" class="btn-ghost-hero">How it works →</a>
+    </div>
+  </div>
+  <div class="hero-standards">
+    <div class="std-pill">ISO 14064<span>Aligned Methodology</span></div>
+    <div class="std-pill">Scope 1, 2 &amp; 3<span>Full GHG Inventory</span></div>
+    <div class="std-pill">Audit-Ready<span>Third-Party Verifiable</span></div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item" style="padding-right:36px;margin-right:36px;"><span style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--foam);">A service by Eddy Out Sustainability Consulting</span></div>
+  <div class="strip-item"><span class="strip-check">✓</span><span class="strip-text">ISO 14064</span></div>
+  <div class="strip-item"><span class="strip-check">✓</span><span class="strip-text">GHG Protocol</span></div>
+  <div class="strip-item"><span class="strip-check">✓</span><span class="strip-text">CSRD / ESRS</span></div>
+  <div class="strip-item"><span class="strip-check">✓</span><span class="strip-text">SEC Climate Rules</span></div>
+  <div class="strip-item"><span class="strip-check">✓</span><span class="strip-text">TCFD Aligned</span></div>
+  <div class="strip-item"><span class="strip-check">✓</span><span class="strip-text">CDP Ready</span></div>
+  <div class="strip-item"><span class="strip-check">✓</span><span class="strip-text">Science Based Targets</span></div>
+</div>
+
+<!-- INTRO -->
+<section class="intro reveal">
+  <div class="intro-text">
+    <div class="section-eyebrow">Headwaters Sustainability Reporting</div>
+    <h2>Eco-smart reporting by<br><em>Eddy Out Sustainability</em></h2>
+    <p>Eddy Out Sustainability Consulting was founded on the idea of protecting what matters most — the environment, your communities, and your business's future. Sustainability isn't just a responsibility. <strong>It's a competitive advantage.</strong></p>
+    <p>Headwaters is Eddy Out's managed reporting service — bringing that same philosophy to carbon accounting — turning what used to be an expensive, complex, in-house undertaking into a straightforward, affordable engagement that delivers the documentation your business actually needs.</p>
+    <p>You share your data. We do the work. You get reports your customers, investors, and regulators will trust.</p>
+  </div>
+  <div class="intro-img">
+    <img
+      src="https://images.squarespace-cdn.com/content/v1/66e88d40913abd50cd453218/4cedd536-ec67-4125-bc5a-9459eb6520a6/IMG_7762.jpeg"
+      alt="Eddy Out team in the field"
+    >
+    <div class="intro-img-badge">
+      <strong>Done for you</strong>
+      No sustainability team required on your end
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem reveal">
+  <div class="section-eyebrow">Why This Matters</div>
+  <h2>Your customers are asking.<br><em>Your competitors are already reporting.</em></h2>
+  <p class="problem-intro">Sustainability reporting has moved from optional to expected. Whether it's enterprise procurement questionnaires, investor ESG requirements, or incoming regulations — businesses that can't demonstrate their environmental performance are getting left behind.</p>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <h4>Traditional consulting runs $30k–$150k per engagement</h4>
+      <p>A one-time report is costly, outdated by delivery, and leaves you no better equipped for next year's reporting cycle.</p>
+    </div>
+    <div class="problem-card">
+      <h4>Hiring in-house is rarely practical at your stage</h4>
+      <p>A qualified sustainability manager costs $80k–$130k/year — and still needs tools and frameworks to produce defensible reports.</p>
+    </div>
+    <div class="problem-card">
+      <h4>Spreadsheet tracking won't hold up to scrutiny</h4>
+      <p>DIY carbon estimates are easy to challenge. When a customer or regulator asks for your methodology, you need a documented, standards-aligned answer.</p>
+    </div>
+    <div class="problem-card">
+      <h4>The regulatory clock is already ticking</h4>
+      <p>CSRD mandatory reporting has begun for EU-operating companies. SEC Climate disclosure rules are active. Waiting is no longer a neutral choice.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section class="how reveal" id="how">
+  <div class="section-eyebrow">Our Process</div>
+  <h2>We handle the reporting.<br><em>You run your business.</em></h2>
+  <p class="how-sub">Simple, low-friction intake. Rigorous methodology. Reports you can hand to anyone with confidence — reviewed and signed off by our team before they reach you.</p>
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>We Gather Your Data</h3>
+      <p>We walk you through a structured, low-effort intake to collect what we need — utility bills, fuel records, travel data, supply chain information. We do the organizing and cleaning.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>We Run the Accounting</h3>
+      <p>Using our ISO 14064-aligned carbon accounting tool, we calculate your Scope 1, 2, and 3 emissions with verified emission factors and fully documented methodology.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>We Review &amp; Verify</h3>
+      <p>Our team reviews every figure, flags anomalies, and ensures the analysis meets the quality standard required for external disclosure, investor reporting, or third-party verification.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h3>We Deliver Your Reports</h3>
+      <p>You receive audit-ready reports tailored to your needs — investor disclosures, customer documentation, regulatory filings. Clear, credible, and ready to use immediately.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section class="deliverables reveal" id="deliverables">
+  <div class="section-eyebrow">What You Receive</div>
+  <h2>Tangible deliverables,<br><em>not just analysis</em></h2>
+  <p class="del-intro">Every Eddy Out reporting engagement produces documentation you can actually use — in customer conversations, investor meetings, regulatory filings, and procurement processes.</p>
+  <div class="del-grid">
+    <div class="del-card">
+      <span class="del-icon">📋</span>
+      <div class="del-title">Carbon Inventory Report</div>
+      <div class="del-desc">A complete, auditable GHG inventory covering Scope 1, 2, and 3 emissions with documented methodology, verified emission factors, and quality assurance notes — ready for third-party verification.</div>
+    </div>
+    <div class="del-card">
+      <span class="del-icon">🤝</span>
+      <div class="del-title">Customer Transparency Document</div>
+      <div class="del-desc">A professional sustainability summary your sales and procurement teams can attach to RFPs, share with enterprise customers, and use to respond to supplier questionnaires. Credible and verified.</div>
+    </div>
+    <div class="del-card">
+      <span class="del-icon">📊</span>
+      <div class="del-title">Executive &amp; Investor Summary</div>
+      <div class="del-desc">A board- and investor-ready overview of your environmental footprint, year-over-year trends, and performance against reduction targets — clear for decision-makers, not just sustainability teams.</div>
+    </div>
+    <div class="del-card">
+      <span class="del-icon">📁</span>
+      <div class="del-title">Regulatory Filing Support</div>
+      <div class="del-desc">Where applicable, we prepare your data for CDP, CSRD, SEC climate disclosures, and other frameworks — saving weeks of formatting work and reducing the risk of errors in formal filings.</div>
+    </div>
+    <div class="del-card">
+      <span class="del-icon">🎯</span>
+      <div class="del-title">Reduction Opportunity Analysis</div>
+      <div class="del-desc">A prioritized breakdown of your biggest emission sources with practical, costed reduction pathways — giving leadership a roadmap to act on, not just a footprint number to worry about.</div>
+    </div>
+    <div class="del-card">
+      <span class="del-icon">🔍</span>
+      <div class="del-title">Methodology Documentation</div>
+      <div class="del-desc">The full workings behind every figure — emission factors used, calculation approach, standards applied, assumptions made. Defensible and traceable whenever anyone asks the hard questions.</div>
+    </div>
+  </div>
+</section>
+
+<!-- STANDARDS -->
+<section class="standards reveal" id="standards">
+  <div class="standards-text">
+    <div class="section-eyebrow">Our Methodology</div>
+    <h2>Backed by the<br><em>standards that matter</em></h2>
+    <p>We don't use black-box calculations or proprietary methods. Our carbon accounting work is built on internationally recognized standards that your customers, investors, and regulators already accept as credible.</p>
+    <p>Our primary accounting tool is aligned with ISO 14064 — ensuring your emissions inventory is calculated consistently, comparably, and using peer-reviewed emission factor databases.</p>
+    <div class="std-note">
+      <strong>Why this matters:</strong> When a customer's procurement team, an ESG-focused investor, or a regulator asks how your numbers were calculated, you can point to internationally recognized standards — not an internal spreadsheet. That's the difference between a defensible disclosure and a liability.
+    </div>
+  </div>
+  <div class="std-cards">
+    <div class="std-card">
+      <div class="std-icon">🌿</div>
+      <div>
+        <div class="std-title">ISO 14064 Aligned</div>
+        <div class="std-desc">The International Standard for GHG quantification and reporting. ISO 14064 compliance is the benchmark for credible, auditable carbon inventories — accepted by investors, supply chains, and regulators worldwide.</div>
+      </div>
+    </div>
+    <div class="std-card">
+      <div class="std-icon">📐</div>
+      <div>
+        <div class="std-title">GHG Protocol — Scope 1, 2 &amp; 3</div>
+        <div class="std-desc">We account for the full picture — direct operations, purchased energy, and supply chain — using the GHG Protocol corporate standard alongside ISO 14064.</div>
+      </div>
+    </div>
+    <div class="std-card">
+      <div class="std-icon">✅</div>
+      <div>
+        <div class="std-title">Audit-Ready &amp; Third-Party Verifiable</div>
+        <div class="std-desc">Every engagement produces the documentation trail needed for third-party verification — an increasingly required step from investors, enterprise customers, and regulators.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing reveal" id="pricing">
+  <div class="section-eyebrow">Service Plans</div>
+  <h2>Transparent pricing.<br><em>No surprise invoices.</em></h2>
+  <p class="pricing-intro">Straightforward service plans designed to give every company an affordable path to credible reporting — from a first carbon footprint to full ongoing compliance support. We do the work; you keep the deliverables.</p>
+  <div class="pricing-cards">
+
+    <div class="price-card">
+      <div class="plan-name">Foundations</div>
+      <div class="plan-price">
+        <span class="price-curr">$</span>
+        <span class="price-amt">99</span>
+        <span class="price-per">/mo</span>
+      </div>
+      <div class="plan-billing">Billed annually — $1,188/year</div>
+      <div class="plan-desc">For small businesses that need a defensible, documented carbon footprint and a credible document to share with customers — without a large commitment.</div>
+      <ul class="plan-features">
+        <li>Annual Scope 1 &amp; 2 carbon inventory</li>
+        <li>ISO 14064-aligned methodology</li>
+        <li>Full written emissions report</li>
+        <li>Customer transparency document</li>
+        <li>Methodology documentation package</li>
+        <li>One advisor review session per year</li>
+        <li>Email support throughout</li>
+      </ul>
+      <a href="https://www.eddyoutenv.com/contact" target="_blank" class="plan-cta">Get Started</a>
+    </div>
+
+    <div class="price-card featured">
+      <div class="featured-badge">Most Popular</div>
+      <div class="plan-name">Complete Reporting</div>
+      <div class="plan-price">
+        <span class="price-curr">$</span>
+        <span class="price-amt">249</span>
+        <span class="price-per">/mo</span>
+      </div>
+      <div class="plan-billing">Billed annually — $2,988/year</div>
+      <div class="plan-desc">For companies with investor reporting needs, supply chain emissions, or enterprise customers requiring verified ESG documentation as a condition of doing business.</div>
+      <ul class="plan-features">
+        <li>Full Scope 1, 2 &amp; 3 inventory</li>
+        <li>ISO 14064-compliant methodology</li>
+        <li>Quarterly reporting cadence</li>
+        <li>Executive &amp; investor summary</li>
+        <li>Customer-ready documentation</li>
+        <li>CDP &amp; CSRD filing support</li>
+        <li>Reduction opportunity analysis</li>
+        <li>Dedicated advisor (monthly check-ins)</li>
+        <li>Full audit-ready documentation</li>
+      </ul>
+      <a href="https://www.eddyoutenv.com/contact" target="_blank" class="plan-cta">Get Started</a>
+    </div>
+
+    <div class="price-card">
+      <div class="plan-name">Compliance &amp; Regulatory</div>
+      <div class="plan-price">
+        <span class="price-curr">$</span>
+        <span class="price-amt">499</span>
+        <span class="price-per">/mo</span>
+      </div>
+      <div class="plan-billing">Billed annually — $5,988/year</div>
+      <div class="plan-desc">For companies with active regulatory filing requirements, third-party verification processes, or multi-site operations needing deep ongoing compliance support.</div>
+      <ul class="plan-features">
+        <li>Everything in Complete Reporting</li>
+        <li>Multi-site / multi-entity accounting</li>
+        <li>SEC Climate Disclosure preparation</li>
+        <li>TCFD &amp; SBTi-aligned reporting</li>
+        <li>Third-party verification coordination</li>
+        <li>Priority advisor access (weekly)</li>
+        <li>White-label customer reports</li>
+        <li>Regulatory monitoring &amp; alerts</li>
+        <li>Custom emission factor library</li>
+      </ul>
+      <a href="https://www.eddyoutenv.com/contact" target="_blank" class="plan-cta">Get Started</a>
+    </div>
+
+  </div>
+  <p class="pricing-note">
+    All plans begin with a <strong>free scoping call</strong> — no obligation. We'll walk through your situation and recommend the right fit. Need something custom? <a href="https://www.eddyoutenv.com/contact" target="_blank">Let's talk.</a>
+  </p>
+</section>
+
+<!-- WHO WE SERVE -->
+<section class="who reveal">
+  <div class="section-eyebrow">Who We Serve</div>
+  <h2>Built for companies<br><em>at every stage</em></h2>
+  <div class="who-grid">
+    <div class="who-card">
+      <span class="who-icon">🏭</span>
+      <div class="who-title">Manufacturers</div>
+      <div class="who-desc">Respond to customer sustainability audits, document Scope 3 supply chain emissions, and meet regulatory requirements — without hiring a full-time sustainability team.</div>
+    </div>
+    <div class="who-card">
+      <span class="who-icon">🏢</span>
+      <div class="who-title">Professional Services</div>
+      <div class="who-desc">Demonstrate your firm's environmental commitment with an advisor-reviewed carbon footprint and professional disclosure you can stand behind in any client or investor conversation.</div>
+    </div>
+    <div class="who-card">
+      <span class="who-icon">🛒</span>
+      <div class="who-title">Retail &amp; Consumer Brands</div>
+      <div class="who-desc">Back your brand's environmental claims with verified third-party data, meet retailer requirements, and communicate transparently with increasingly eco-conscious customers.</div>
+    </div>
+    <div class="who-card">
+      <span class="who-icon">🚀</span>
+      <div class="who-title">Growth-Stage Companies</div>
+      <div class="who-desc">Build proper sustainability infrastructure before investors and enterprise customers start demanding it — at a price that fits where you are, not where you're heading.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI -->
+<section class="roi reveal">
+  <div class="roi-text">
+    <div class="section-eyebrow">The Business Case</div>
+    <h2>This isn't just a cost.<br><em>It's a competitive advantage.</em></h2>
+    <p>Companies with credible sustainability reporting win more enterprise contracts, satisfy investor ESG requirements more easily, and retain the talent that cares about where they work. Eddy Out makes that level of reporting accessible to businesses that used to have to go without it.</p>
+  </div>
+  <div class="roi-nums">
+    <div class="roi-card">
+      <div class="roi-val">67%</div>
+      <div class="roi-lbl">of enterprise buyers include ESG criteria in procurement decisions</div>
+    </div>
+    <div class="roi-card">
+      <div class="roi-val">$2.6T</div>
+      <div class="roi-lbl">in ESG-linked financing tied to sustainability performance metrics</div>
+    </div>
+    <div class="roi-card">
+      <div class="roi-val">3–5×</div>
+      <div class="roi-lbl">lower cost than traditional sustainability consulting for equivalent output</div>
+    </div>
+    <div class="roi-card">
+      <div class="roi-val">2026</div>
+      <div class="roi-lbl">CSRD mandatory reporting now active for EU-listed and operating companies</div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team reveal">
+  <div class="section-eyebrow">Our Team</div>
+  <h2>People who care about<br><em>your outcomes</em></h2>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar">
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/66e88d40913abd50cd453218/54d9247d-45d4-4a7f-b910-351aff33b646/Screenshot+2024-07-15+at+4.07.44%E2%80%AFPM.png"
+          alt="Garrett Wright"
+          onerror="this.outerHTML='GW'"
+        >
+      </div>
+      <div>
+        <div class="team-name">Garrett Wright</div>
+        <div class="team-role">Principal Consultant &amp; Founder</div>
+        <div class="team-bio">Founder of Eddy Out Sustainability Consulting, Garrett combines expertise in sustainability with a deep passion for the outdoors and the communities we share. His mission: drive meaningful environmental change while delivering real, measurable business results. Montana State University, Political Science + International Business.</div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/66e88d40913abd50cd453218/8676ef60-9a6f-43ee-a0b9-5c3d052f73db/IMG_2381.jpeg"
+          alt="Marcel Stenfert Kroese"
+          onerror="this.outerHTML='MS'"
+        >
+      </div>
+      <div>
+        <div class="team-name">Marcel Stenfert Kroese</div>
+        <div class="team-role">Marketing &amp; Business Development</div>
+        <div class="team-bio">Marcel brings a listening-first approach to outreach — finding organizations whose work aligns with Eddy Out's mission and looking for ways data can strengthen what they're already doing. Business Marketing, Montana State University.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMISE -->
+<div class="promise reveal">
+  <blockquote>
+    "Headwaters exists because every business doing the right thing deserves to be able to prove it — clearly, affordably, and with documentation that holds up. We handle the reporting so you can focus on what you do best."
+  </blockquote>
+  <cite>— Garrett Wright, Founder &amp; Principal Consultant, Eddy Out Sustainability Consulting</cite>
+</div>
+
+<!-- CTA -->
+<section class="cta reveal" id="contact">
+  <div class="section-eyebrow" style="justify-content:center;">Get Started</div>
+  <h2>Start with Headwaters<br><em>today</em></h2>
+  <p>Book a free scoping call with the Eddy Out team. We'll walk through your situation, what Headwaters can do for you, and which plan makes sense. No obligation, no jargon.</p>
+  <div class="cta-actions">
+    <a href="https://www.eddyoutenv.com/contact" target="_blank" class="btn-primary">Book a Free Scoping Call</a>
+    <a href="#pricing" class="btn-outline">See Service Plans</a>
+  </div>
+  <p class="cta-contact">Questions? Email us at <a href="mailto:Garrett@eddyoutenv.com">Garrett@eddyoutenv.com</a></p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/66e88d40913abd50cd453218/9f7361bb-6e0d-49da-b3da-38b8e0bc7100/Eddy+Out+White+Page+Logo+%286%29.png"
+          alt="Eddy Out"
+          onerror="this.parentElement.innerHTML='<span style=\'font-family:Cormorant Garamond,serif;font-size:20px;font-weight:700;color:rgba(255,255,255,0.8);\'>Eddy Out Sustainability</span>'"
+        >
+      </div>
+      <p class="footer-tagline">Headwaters Sustainability Reporting is a service of Eddy Out Sustainability Consulting — easy, affordable, and backed by the science regulators, investors, and customers trust.</p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/company/eddy-out-environmental/" target="_blank" title="LinkedIn">in</a>
+        <a href="mailto:Garrett@eddyoutenv.com" title="Email">✉</a>
+        <a href="https://platform.leafr.com/myprofile" target="_blank" title="Leafr">🌿</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Reporting Services</div>
+      <ul class="footer-links">
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#deliverables">Deliverables</a></li>
+        <li><a href="#pricing">Service Plans</a></li>
+        <li><a href="https://www.eddyoutenv.com/contact" target="_blank">Book a Call</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Our Services</div>
+      <ul class="footer-links">
+        <li><a href="https://www.eddyoutenv.com/services" target="_blank">GHG Reporting</a></li>
+        <li><a href="https://www.eddyoutenv.com/services" target="_blank">Regulatory Compliance</a></li>
+        <li><a href="https://www.eddyoutenv.com/services" target="_blank">Grant Writing</a></li>
+        <li><a href="https://www.eddyoutenv.com/services" target="_blank">All Services</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Company</div>
+      <ul class="footer-links">
+        <li><a href="https://www.eddyoutenv.com/whoweare" target="_blank">Who We Are</a></li>
+        <li><a href="https://www.eddyoutenv.com/our-team" target="_blank">Our Team</a></li>
+        <li><a href="https://www.eddyoutenv.com/past-projects" target="_blank">Past Projects</a></li>
+        <li><a href="https://www.eddyoutenv.com/contact" target="_blank">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Eddy Out Sustainability Consulting · Headwaters Sustainability Reporting</div>
+    <div class="footer-legal">
+      <a href="https://www.eddyoutenv.com" target="_blank">eddyoutenv.com</a>
+      <a href="mailto:Garrett@eddyoutenv.com">Garrett@eddyoutenv.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.07, rootMargin:'0px 0px -36px 0px' }
+  );
+  reveals.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
