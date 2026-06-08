@@ -300,7 +300,24 @@
   .pricing h2{color:var(--white);}
   .pricing h2 em{color:var(--mist);}
   .pricing-intro{margin-top:16px;font-size:16px;line-height:1.7;color:var(--sage);font-weight:300;max-width:520px;}
-  .pricing-cards{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;position:relative;z-index:2;}
+  .billing-toggle{
+    display:inline-flex;margin-top:32px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(168,204,184,0.18);
+    border-radius:30px;padding:4px;
+  }
+  .bt-opt{
+    padding:9px 24px;border-radius:24px;border:none;cursor:pointer;
+    font-size:13px;font-weight:500;color:var(--sage);background:transparent;
+    transition:all 0.2s;letter-spacing:0.02em;display:flex;align-items:center;gap:7px;
+  }
+  .bt-opt.active{background:var(--sage);color:var(--pine);}
+  .bt-save{
+    background:var(--pine);color:var(--sage);
+    font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+    padding:2px 7px;border-radius:10px;
+  }
+  .pricing-cards{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;position:relative;z-index:2;}
   .price-card{
     background:rgba(255,255,255,0.04);
     border:1px solid rgba(168,204,184,0.13);
@@ -547,7 +564,7 @@
   /* ─── FOOTER ─── */
   footer{background:var(--ink);padding:56px 60px 36px;}
   .footer-top{
-    display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;
+    display:grid;grid-template-columns:2fr 1fr;gap:60px;
     padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.07);
     margin-bottom:32px;
   }
@@ -592,7 +609,7 @@
     .pricing-cards{grid-template-columns:1fr;max-width:420px;}
     .who-grid{grid-template-columns:repeat(2,1fr);}
     .team-grid{grid-template-columns:1fr;}
-    .footer-top{grid-template-columns:1fr 1fr;gap:40px;}
+    .footer-top{grid-template-columns:1fr;gap:32px;}
   }
   @media(max-width:640px){
     nav{padding:0 20px;}
@@ -822,16 +839,22 @@
   <div class="section-eyebrow">Service Plans</div>
   <h2>Transparent pricing.<br><em>No surprise invoices.</em></h2>
   <p class="pricing-intro">Straightforward service plans designed to give every company an affordable path to credible reporting — from a first carbon footprint to full ongoing compliance support. We do the work; you keep the deliverables.</p>
+  <div class="billing-toggle">
+    <button class="bt-opt" id="bt-monthly" onclick="setBilling('monthly')">Monthly</button>
+    <button class="bt-opt active" id="bt-annual" onclick="setBilling('annual')">Annual <span class="bt-save">Save 20%</span></button>
+  </div>
   <div class="pricing-cards">
 
     <div class="price-card">
       <div class="plan-name">Foundations</div>
       <div class="plan-price">
         <span class="price-curr">$</span>
-        <span class="price-amt">99</span>
+        <span class="price-amt pa-annual">99</span>
+        <span class="price-amt pa-monthly" style="display:none">129</span>
         <span class="price-per">/mo</span>
       </div>
-      <div class="plan-billing">Billed annually — $1,188/year</div>
+      <div class="plan-billing pa-annual">Billed annually — $1,188/year</div>
+      <div class="plan-billing pa-monthly" style="display:none">Billed monthly — cancel anytime</div>
       <div class="plan-desc">For small businesses that need a defensible, documented carbon footprint and a credible document to share with customers — without a large commitment.</div>
       <ul class="plan-features">
         <li>Annual Scope 1 &amp; 2 carbon inventory</li>
@@ -842,7 +865,7 @@
         <li>One advisor review session per year</li>
         <li>Email support throughout</li>
       </ul>
-      <a href="https://www.eddyoutenv.com/contact" target="_blank" class="plan-cta">Get Started</a>
+      <a href="#contact" class="plan-cta">Get Started</a>
     </div>
 
     <div class="price-card featured">
@@ -850,10 +873,12 @@
       <div class="plan-name">Complete Reporting</div>
       <div class="plan-price">
         <span class="price-curr">$</span>
-        <span class="price-amt">249</span>
+        <span class="price-amt pa-annual">249</span>
+        <span class="price-amt pa-monthly" style="display:none">319</span>
         <span class="price-per">/mo</span>
       </div>
-      <div class="plan-billing">Billed annually — $2,988/year</div>
+      <div class="plan-billing pa-annual">Billed annually — $2,988/year</div>
+      <div class="plan-billing pa-monthly" style="display:none">Billed monthly — cancel anytime</div>
       <div class="plan-desc">For companies with investor reporting needs, supply chain emissions, or enterprise customers requiring verified ESG documentation as a condition of doing business.</div>
       <ul class="plan-features">
         <li>Full Scope 1, 2 &amp; 3 inventory</li>
@@ -866,17 +891,19 @@
         <li>Dedicated advisor (monthly check-ins)</li>
         <li>Full audit-ready documentation</li>
       </ul>
-      <a href="https://www.eddyoutenv.com/contact" target="_blank" class="plan-cta">Get Started</a>
+      <a href="#contact" class="plan-cta">Get Started</a>
     </div>
 
     <div class="price-card">
       <div class="plan-name">Compliance &amp; Regulatory</div>
       <div class="plan-price">
         <span class="price-curr">$</span>
-        <span class="price-amt">499</span>
+        <span class="price-amt pa-annual">499</span>
+        <span class="price-amt pa-monthly" style="display:none">629</span>
         <span class="price-per">/mo</span>
       </div>
-      <div class="plan-billing">Billed annually — $5,988/year</div>
+      <div class="plan-billing pa-annual">Billed annually — $5,988/year</div>
+      <div class="plan-billing pa-monthly" style="display:none">Billed monthly — cancel anytime</div>
       <div class="plan-desc">For companies with active regulatory filing requirements, third-party verification processes, or multi-site operations needing deep ongoing compliance support.</div>
       <ul class="plan-features">
         <li>Everything in Complete Reporting</li>
@@ -889,12 +916,12 @@
         <li>Regulatory monitoring &amp; alerts</li>
         <li>Custom emission factor library</li>
       </ul>
-      <a href="https://www.eddyoutenv.com/contact" target="_blank" class="plan-cta">Get Started</a>
+      <a href="#contact" class="plan-cta">Get Started</a>
     </div>
 
   </div>
   <p class="pricing-note">
-    All plans begin with a <strong>free scoping call</strong> — no obligation. We'll walk through your situation and recommend the right fit. Need something custom? <a href="https://www.eddyoutenv.com/contact" target="_blank">Let's talk.</a>
+    All plans begin with a <strong>free scoping call</strong> — no obligation. We'll walk through your situation and recommend the right fit. Need something custom? <a href="#contact">Let's talk.</a>
   </p>
 </section>
 
@@ -1082,38 +1109,21 @@
         <span class="footer-wordmark">Headwaters</span>
         <span class="footer-wordmark-sub">by Eddy Out Sustainability Consulting</span>
       </div>
-      <p class="footer-tagline">Headwaters Sustainability Reporting is a service of Eddy Out Sustainability Consulting — easy, affordable, and backed by the science regulators, investors, and customers trust.</p>
+      <p class="footer-tagline">A managed sustainability reporting service from Eddy Out Sustainability Consulting — easy, affordable, and backed by the standards regulators, investors, and customers trust.</p>
       <div class="footer-social">
         <a href="https://www.linkedin.com/company/eddy-out-environmental/" target="_blank" title="LinkedIn">in</a>
         <a href="mailto:Garrett@eddyoutenv.com" title="Email">✉</a>
-        <a href="https://platform.leafr.com/myprofile" target="_blank" title="Leafr">🌿</a>
+        <a href="https://www.eddyoutenv.com" target="_blank" title="Eddy Out">EO</a>
       </div>
     </div>
     <div>
-      <div class="footer-heading">Reporting Services</div>
+      <div class="footer-heading">Headwaters Reporting</div>
       <ul class="footer-links">
         <li><a href="#how">How It Works</a></li>
         <li><a href="#deliverables">Deliverables</a></li>
         <li><a href="#pricing">Service Plans</a></li>
-        <li><a href="https://www.eddyoutenv.com/contact" target="_blank">Book a Call</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-heading">Our Services</div>
-      <ul class="footer-links">
-        <li><a href="https://www.eddyoutenv.com/services" target="_blank">GHG Reporting</a></li>
-        <li><a href="https://www.eddyoutenv.com/services" target="_blank">Regulatory Compliance</a></li>
-        <li><a href="https://www.eddyoutenv.com/services" target="_blank">Grant Writing</a></li>
-        <li><a href="https://www.eddyoutenv.com/services" target="_blank">All Services</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-heading">Company</div>
-      <ul class="footer-links">
-        <li><a href="https://www.eddyoutenv.com/whoweare" target="_blank">Who We Are</a></li>
-        <li><a href="https://www.eddyoutenv.com/our-team" target="_blank">Our Team</a></li>
-        <li><a href="https://www.eddyoutenv.com/past-projects" target="_blank">Past Projects</a></li>
-        <li><a href="https://www.eddyoutenv.com/contact" target="_blank">Contact</a></li>
+        <li><a href="#contact">Book a Free Call</a></li>
+        <li><a href="mailto:Garrett@eddyoutenv.com">Garrett@eddyoutenv.com</a></li>
       </ul>
     </div>
   </div>
@@ -1133,6 +1143,13 @@
     { threshold: 0.07, rootMargin:'0px 0px -36px 0px' }
   );
   reveals.forEach(el => io.observe(el));
+
+  function setBilling(mode) {
+    document.getElementById('bt-monthly').classList.toggle('active', mode === 'monthly');
+    document.getElementById('bt-annual').classList.toggle('active', mode === 'annual');
+    document.querySelectorAll('.pa-annual').forEach(el => el.style.display = mode === 'annual' ? '' : 'none');
+    document.querySelectorAll('.pa-monthly').forEach(el => el.style.display = mode === 'monthly' ? '' : 'none');
+  }
 
 </script>
 </body>
