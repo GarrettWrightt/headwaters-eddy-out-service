@@ -382,6 +382,24 @@
   .plan-cta:hover{background:rgba(255,255,255,0.05);border-color:rgba(168,204,184,0.4);color:var(--white);}
   .price-card.featured .plan-cta{background:var(--sage);color:var(--pine);border-color:var(--sage);}
   .price-card.featured .plan-cta:hover{background:var(--mist);}
+  .plan-details{margin-top:20px;border-top:1px solid rgba(168,204,184,0.12);padding-top:16px;}
+  .plan-details summary{
+    cursor:pointer;list-style:none;
+    font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--sage);display:flex;align-items:center;justify-content:space-between;
+    user-select:none;
+  }
+  .plan-details summary::-webkit-details-marker{display:none;}
+  .pda{transition:transform 0.25s;display:inline-block;font-style:normal;}
+  .plan-details[open] .pda{transform:rotate(180deg);}
+  .plan-details-body{margin-top:16px;display:flex;flex-direction:column;gap:16px;}
+  .pdb-intro{font-size:12px;line-height:1.6;color:rgba(168,204,184,0.55);}
+  .pdb-group{display:flex;flex-direction:column;gap:8px;}
+  .pdb-group-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(168,204,184,0.5);}
+  .pdb-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
+  .pdb-list li{font-size:12px;color:var(--mist);display:flex;align-items:flex-start;gap:8px;line-height:1.45;}
+  .pdb-list li::before{content:'□';color:rgba(168,204,184,0.35);flex-shrink:0;font-size:11px;margin-top:1px;}
+  .pdb-note{font-size:11px;line-height:1.55;color:rgba(168,204,184,0.4);font-style:italic;}
   .pricing-note{margin-top:36px;text-align:center;font-size:13px;color:var(--sage);}
   .pricing-note strong{color:var(--mist);}
   .pricing-note a{color:var(--teal-lt);}
@@ -887,6 +905,24 @@
         <li>Email support throughout</li>
       </ul>
       <a href="#contact" class="plan-cta">Get Started</a>
+      <details class="plan-details">
+        <summary>What you'll need to get started <span class="pda">↓</span></summary>
+        <div class="plan-details-body">
+          <p class="pdb-intro">Send us what you have — we'll follow up on anything missing before we start.</p>
+          <div class="pdb-group">
+            <div class="pdb-group-label">Documents to gather</div>
+            <ul class="pdb-list">
+              <li>12 months of electricity bills — all locations, kWh usage</li>
+              <li>Natural gas / heating fuel bills or delivery receipts</li>
+              <li>Company vehicle fuel records (fuel cards, receipts, or total gallons)</li>
+              <li>On-site fuel &amp; equipment records (generators, forklifts, etc.) if any</li>
+              <li>Company info: name, locations, square footage, headcount</li>
+              <li>The 12-month reporting period you want covered</li>
+            </ul>
+          </div>
+          <p class="pdb-note">Don't operate vehicles or burn on-site fuel? Just let us know — we'll mark those as not applicable and move on.</p>
+        </div>
+      </details>
     </div>
 
     <div class="price-card featured">
@@ -913,6 +949,33 @@
         <li>Full audit-ready documentation</li>
       </ul>
       <a href="#contact" class="plan-cta">Get Started</a>
+      <details class="plan-details">
+        <summary>What you'll need to get started <span class="pda">↓</span></summary>
+        <div class="plan-details-body">
+          <p class="pdb-intro">Start with the core energy records, then layer in the supply-chain items below.</p>
+          <div class="pdb-group">
+            <div class="pdb-group-label">Core energy &amp; fuel</div>
+            <ul class="pdb-list">
+              <li>12 months of electricity bills — all locations</li>
+              <li>Natural gas / heating fuel bills or receipts</li>
+              <li>Company vehicle fuel records</li>
+              <li>Company info: locations, square footage, headcount</li>
+            </ul>
+          </div>
+          <div class="pdb-group">
+            <div class="pdb-group-label">Supply chain &amp; operations (Scope 3)</div>
+            <ul class="pdb-list">
+              <li>Purchased goods &amp; services spend report by category</li>
+              <li>Business travel summary — flights, hotels, rental cars, mileage</li>
+              <li>Employee commuting info or a short staff survey</li>
+              <li>Shipping &amp; freight records (inbound and outbound)</li>
+              <li>Waste &amp; recycling hauler invoices or tonnage reports</li>
+              <li>Quarterly reporting dates + any filing targets (CDP, CSRD, investor)</li>
+            </ul>
+          </div>
+          <p class="pdb-note">Most of this lives in your accounting and expense systems. A read-only export by category is usually all we need.</p>
+        </div>
+      </details>
     </div>
 
     <div class="price-card">
@@ -938,6 +1001,32 @@
         <li>Custom emission factor library</li>
       </ul>
       <a href="#contact" class="plan-cta">Get Started</a>
+      <details class="plan-details">
+        <summary>What you'll need to get started <span class="pda">↓</span></summary>
+        <div class="plan-details-body">
+          <p class="pdb-intro">Provide the full inventory records below, then add the compliance and multi-site items.</p>
+          <div class="pdb-group">
+            <div class="pdb-group-label">Core inventory data</div>
+            <ul class="pdb-list">
+              <li>Electricity, gas, and vehicle fuel records — all locations</li>
+              <li>Supply-chain records: purchased goods, travel, commuting, freight, waste</li>
+            </ul>
+          </div>
+          <div class="pdb-group">
+            <div class="pdb-group-label">Compliance &amp; multi-site</div>
+            <ul class="pdb-list">
+              <li>All legal entities and sites + ownership percentages</li>
+              <li>Per-site breakdown of energy, fuel, travel, and waste data</li>
+              <li>Applicable regulatory filings and their deadlines</li>
+              <li>Third-party verifier details (or we coordinate one for you)</li>
+              <li>Climate governance info and any existing reduction targets (TCFD, SBTi)</li>
+              <li>Prior emissions reports, audit records, or public disclosures</li>
+              <li>Branding assets — logo and guidelines for white-label reports</li>
+            </ul>
+          </div>
+          <p class="pdb-note">Verification, regulatory monitoring, and custom emission factors are managed on our end — we only come back with specific questions when something needs confirmation.</p>
+        </div>
+      </details>
     </div>
 
   </div>
